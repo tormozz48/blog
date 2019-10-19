@@ -8,8 +8,8 @@ language: en
 timezone: Europe/Simferopol
 
 # URL
-url: http://yoursite.com
-root: /
+url: https://tormozz48.github.io/blog
+root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -66,4 +66,6 @@ pagination_dir: page
 theme: theme
 
 deploy:
-  type:
+  type: git
+  repo: https://github.com/tormozz48/blog
+  branch: published
