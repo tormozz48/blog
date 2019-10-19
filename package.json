@@ -1,0 +1,44 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "server": "hexo server"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './git/commitlint.js'"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./git/commitizen.js"
+    }
+  },
+  "hexo": {
+    "version": ""
+  },
+  "dependencies": {
+    "hexo": "^4.0.0",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-index": "^1.0.0",
+    "hexo-generator-tag": "^1.0.0",
+    "hexo-renderer-ejs": "^1.0.0",
+    "hexo-renderer-stylus": "^1.1.0",
+    "hexo-renderer-marked": "^2.0.0",
+    "hexo-server": "^1.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "commitizen": "^4.0.3",
+    "cz-customizable": "^6.2.0",
+    "husky": "^3.0.9"
+  }
+}
