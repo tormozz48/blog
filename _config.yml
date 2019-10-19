@@ -67,5 +67,5 @@ theme: theme
 
 deploy:
   type: git
-  repo: https://github.com/tormozz48/blog
+  repo: git@github.com:tormozz48/blog.git
   branch: published
