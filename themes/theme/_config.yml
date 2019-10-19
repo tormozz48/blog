@@ -4,7 +4,7 @@ nav:
   Posts: /archives
   Categories: /category
   Tags: /tag
-  About: /about
+  Profile: /profile
 
 favicon: /favicon.ico
 nickname: Andrey Kuznetsov
@@ -12,10 +12,10 @@ description: Personal Blog about software development, languages and algorithms
 avatar: /image/avatar.jpg
 
 links:
-  Blog: /archives
-#  Category:
-#  Tags:
-#  Link:
+  Blog: ./archives
+  Category: ./category
+  Tags: ./tag
+# Link:
   LinkedIn: https://www.linkedin.com/in/andrey-kuznetsov-877a824b/
   Twitter: https://twitter.com/kuznetsov48
   Skype: boomer4848
