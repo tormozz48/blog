@@ -1,0 +1,68 @@
+navname: Andrey Kuznetsov Blog
+
+nav:
+  Posts: /archives
+  Categories: /category
+  Tags: /tag
+  About: /about
+
+favicon: /favicon.ico
+nickname: Andrey Kuznetsov
+description: Personal Blog about software development, languages and algorithms
+avatar: /image/avatar.jpg
+
+links:
+  Blog: /archives
+#  Category:
+#  Tags:
+#  Link:
+  LinkedIn: https://www.linkedin.com/in/andrey-kuznetsov-877a824b/
+  Twitter: https://twitter.com/kuznetsov48
+  Skype: boomer4848
+  Gitlab: https://git.security-awareness.pro/Kuznetsov
+  Github: https://github.com/tormozz48
+
+# how links show: you have 2 choice--text or icon.
+links_text_enable: false
+links_icon_enable: true
+
+# Post page
+## Post_meta
+post_meta_enable: true
+
+post_author_enable: true
+post_date_enable: true
+post_category_enable: true
+## Post copyright
+post_copyright_enable: true
+
+post_copyright_author_enable: true
+post_copyright_permalink_enable: true
+post_copyright_license_enable: true
+post_copyright_license_text: Copyright (c) 2019
+post_copyright_slogan_enable: false
+post_copyright_slogan_text: Do you believe in <strong>DESTINY<strong>?
+## toc
+post_toc_enable: true
+
+# Page
+page_title_enable: true
+
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# stylesheets loaded in the <head>
+stylesheets:
+  - /css/style.css
+
+# scripts loaded in the end of the body
+scripts:
+  - /js/script.js
+  - /js/tocbot.min.js
+    # tscanlin/tocbot: Build a table of contents from headings in an HTML document.
+    # https://github.com/tscanlin/tocbot
+
+
+mathjax:
+  enable: false
+  import: demand
