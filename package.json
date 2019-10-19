@@ -6,7 +6,7 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server -p 3000"
   },
   "husky": {
     "hooks": {
@@ -22,7 +22,7 @@
     }
   },
   "hexo": {
-    "version": ""
+    "version": "4.0.0"
   },
   "dependencies": {
     "hexo": "^4.0.0",

@@ -1,11 +1,11 @@
 # Site
-title: mediocrity
+title: Andrey Kuznetsov blog
 subtitle: Andrey Kuznetsov blog
 description: Personal Blog about software development, languages and algorithms
 keywords: blog, software development, algorithms, solutions, personal blog, hexo
 author: Andrey Kuznetsov
 language: en
-timezone:
+timezone: Europe/Simferopol
 
 # URL
 url: http://yoursite.com
@@ -63,7 +63,7 @@ use_date_for_updated: false
 per_page: 10
 pagination_dir: page
 
-theme: landscape
+theme: Chic
 
 deploy:
   type:
