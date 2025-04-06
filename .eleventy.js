@@ -1,4 +1,9 @@
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+
 module.exports = function(eleventyConfig) {
+  // Add syntax highlighting plugin
+  eleventyConfig.addPlugin(syntaxHighlight);
+  
   // Copy assets directory
   eleventyConfig.addPassthroughCopy("src/assets");
   
@@ -18,6 +23,16 @@ module.exports = function(eleventyConfig) {
   // Add collections
   eleventyConfig.addCollection("posts", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/blog/*.md");
+  });
+  
+  // Add algorithms collection
+  eleventyConfig.addCollection("algorithms", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/algorithms/*.md").sort((a, b) => {
+      // Extract the number from the filename (e.g., 01_fixed_sliding_window.md -> 1)
+      const numA = parseInt(a.fileSlug.split('_')[0]);
+      const numB = parseInt(b.fileSlug.split('_')[0]);
+      return numA - numB;
+    });
   });
   
   // Create tag collections

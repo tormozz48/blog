@@ -1,0 +1,52 @@
+---
+layout: base.njk
+---
+
+<article class="algorithm-page">
+    <header class="algorithm-header">
+        <h1>{{ title }}</h1>
+        <p class="algorithm-description">{{ description }}</p>
+    </header>
+
+    <div class="algorithm-content">
+        {{ content | safe }}
+    </div>
+
+    <div class="algorithm-navigation">
+        <div class="algorithm-nav-links">
+            {% if collections.algorithms %}
+                {% set currentIndex = 0 %}
+                {% for algorithm in collections.algorithms %}
+                    {% if algorithm.url == page.url %}
+                        {% set currentIndex = loop.index0 %}
+                    {% endif %}
+                {% endfor %}
+
+                {% set previousAlgorithm = collections.algorithms[currentIndex - 1] %}
+                {% set nextAlgorithm = collections.algorithms[currentIndex + 1] %}
+
+                <div class="algorithm-nav-previous">
+                    {% if previousAlgorithm %}
+                        <a href="{{ previousAlgorithm.url }}" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Previous</span>
+                            <span class="algorithm-nav-title">{{ previousAlgorithm.data.title }}</span>
+                        </a>
+                    {% endif %}
+                </div>
+
+                <div class="algorithm-nav-index">
+                    <a href="/algorithms/" class="algorithm-index-link">All Algorithms</a>
+                </div>
+
+                <div class="algorithm-nav-next">
+                    {% if nextAlgorithm %}
+                        <a href="{{ nextAlgorithm.url }}" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Next</span>
+                            <span class="algorithm-nav-title">{{ nextAlgorithm.data.title }}</span>
+                        </a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</article>

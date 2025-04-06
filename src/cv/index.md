@@ -44,7 +44,7 @@ title: Curriculum Vitae
 
   <div class="cv-section">
     <h3>Work Experience</h3>
-    
+
     <div class="job-item">
       <h4>Senior Software Engineer/Engineering Lead</h4>
       <h5>Osome</h5>
@@ -246,13 +246,13 @@ title: Curriculum Vitae
   document.addEventListener('DOMContentLoaded', () => {
     // Add hover effects to CV sections
     const cvSections = document.querySelectorAll('.cv-section');
-    
+
     cvSections.forEach(section => {
       section.addEventListener('mouseenter', () => {
         section.style.transform = 'translateY(-5px)';
         section.style.boxShadow = '0 8px 15px rgba(0, 0, 0, 0.1)';
       });
-      
+
       section.addEventListener('mouseleave', () => {
         section.style.transform = 'translateY(0)';
         section.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.05)';
