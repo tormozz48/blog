@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backtracking</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/prism-theme.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul style="display: flex; flex-direction: row; list-style: none; padding: 0; margin: 0;">
+                <li style="margin-right: 20px;"><a href="/">Home</a></li>
+                <li style="margin-right: 20px;"><a href="/cv/">CV</a></li>
+                <li style="margin-right: 20px;"><a href="/blog/">Blog</a></li>
+                <li><a href="/algorithms/">Algorithms</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        
+<article class="algorithm-page">
+    <header class="algorithm-header">
+        <h1>Backtracking</h1>
+        <p class="algorithm-description">A general algorithmic technique that considers searching every possible combination to solve a computational problem</p>
+    </header>
+
+    <div class="algorithm-content">
+        <h1>Backtracking</h1>
+<h2>Description</h2>
+<p>Backtracking is an algorithmic technique for solving problems recursively by trying to build a solution incrementally, one piece at a time, and removing those solutions that fail to satisfy the constraints of the problem at any point. It's essentially a depth-first search of the solution space, with pruning of branches that cannot lead to a valid solution.</p>
+<h2>Use Cases</h2>
+<ul>
+<li>Combinatorial problems (permutations, combinations, subsets)</li>
+<li>Constraint satisfaction problems (N-Queens, Sudoku)</li>
+<li>Parsing expressions</li>
+<li>Maze solving</li>
+<li>Path finding in graphs</li>
+<li>Game playing (like chess)</li>
+<li>Cryptarithmetic puzzles</li>
+</ul>
+<h2>Code Example</h2>
+<pre><code class="language-typescript">/**
+ * Problem: Generate all permutations of a string
+ * 
+ * @param str Input string
+ * @returns Array of all permutations
+ */
+function generatePermutations(str: string): string[] {
+    const result: string[] = [];
+    const chars = str.split('');
+    
+    // Helper function to generate permutations
+    function backtrack(start: number): void {
+        // Base case: If we've reached the end of the string
+        if (start === chars.length - 1) {
+            result.push(chars.join(''));
+            return;
+        }
+        
+        // Try each character as the next character in the permutation
+        for (let i = start; i &lt; chars.length; i++) {
+            // Swap characters at positions start and i
+            [chars[start], chars[i]] = [chars[i], chars[start]];
+            
+            // Recursively generate permutations for the rest of the string
+            backtrack(start + 1);
+            
+            // Backtrack: restore the original order (swap back)
+            [chars[start], chars[i]] = [chars[i], chars[start]];
+        }
+    }
+    
+    backtrack(0);
+    return result;
+}
+
+/**
+ * Problem: Generate all subsets of a set
+ * 
+ * @param nums Array of numbers representing the set
+ * @returns Array of all subsets
+ */
+function generateSubsets(nums: number[]): number[][] {
+    const result: number[][] = [];
+    
+    // Helper function to generate subsets
+    function backtrack(start: number, current: number[]): void {
+        // Add the current subset to the result
+        result.push([...current]);
+        
+        // Try adding each remaining number to the current subset
+        for (let i = start; i &lt; nums.length; i++) {
+            // Include the current number
+            current.push(nums[i]);
+            
+            // Recursively generate subsets with the current number included
+            backtrack(i + 1, current);
+            
+            // Backtrack: remove the current number
+            current.pop();
+        }
+    }
+    
+    backtrack(0, []);
+    return result;
+}
+
+/**
+ * Problem: Solve N-Queens problem
+ * The N-Queens problem is to place N queens on an N×N chessboard so that no two queens attack each other.
+ * 
+ * @param n Size of the chessboard
+ * @returns Array of all possible solutions, each represented as an array of strings
+ */
+function solveNQueens(n: number): string[][] {
+    const result: string[][] = [];
+    const board: string[][] = Array(n).fill(0).map(() =&gt; Array(n).fill('.'));
+    
+    // Helper function to check if a queen can be placed at position (row, col)
+    function isValid(row: number, col: number): boolean {
+        // Check column
+        for (let i = 0; i &lt; row; i++) {
+            if (board[i][col] === 'Q') {
+                return false;
+            }
+        }
+        
+        // Check upper-left diagonal
+        for (let i = row - 1, j = col - 1; i &gt;= 0 &amp;&amp; j &gt;= 0; i--, j--) {
+            if (board[i][j] === 'Q') {
+                return false;
+            }
+        }
+        
+        // Check upper-right diagonal
+        for (let i = row - 1, j = col + 1; i &gt;= 0 &amp;&amp; j &lt; n; i--, j++) {
+            if (board[i][j] === 'Q') {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    // Helper function to convert the board to the required format
+    function formatBoard(): string[] {
+        return board.map(row =&gt; row.join(''));
+    }
+    
+    // Backtracking function to place queens row by row
+    function backtrack(row: number): void {
+        // Base case: If all queens are placed
+        if (row === n) {
+            result.push(formatBoard());
+            return;
+        }
+        
+        // Try placing a queen in each column of the current row
+        for (let col = 0; col &lt; n; col++) {
+            if (isValid(row, col)) {
+                // Place the queen
+                board[row][col] = 'Q';
+                
+                // Recursively place queens in the next row
+                backtrack(row + 1);
+                
+                // Backtrack: remove the queen
+                board[row][col] = '.';
+            }
+        }
+    }
+    
+    backtrack(0);
+    return result;
+}
+
+// Example usage
+console.log(&quot;Permutations of 'abc':&quot;, generatePermutations(&quot;abc&quot;));
+// Output: Permutations of 'abc': [&quot;abc&quot;, &quot;acb&quot;, &quot;bac&quot;, &quot;bca&quot;, &quot;cab&quot;, &quot;cba&quot;]
+
+console.log(&quot;Subsets of [1, 2, 3]:&quot;, generateSubsets([1, 2, 3]));
+// Output: Subsets of [1, 2, 3]: [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
+
+console.log(&quot;Solutions to 4-Queens problem:&quot;, solveNQueens(4));
+// Output: Solutions to 4-Queens problem: [
+//   [&quot;.Q..&quot;, &quot;...Q&quot;, &quot;Q...&quot;, &quot;..Q.&quot;],
+//   [&quot;..Q.&quot;, &quot;Q...&quot;, &quot;...Q&quot;, &quot;.Q..&quot;]
+// ]
+</code></pre>
+<h2>LeetCode Example Problems</h2>
+<ul>
+<li><a href="https://leetcode.com/problems/permutations/">LeetCode 46. Permutations</a></li>
+<li><a href="https://leetcode.com/problems/subsets/">LeetCode 78. Subsets</a></li>
+<li><a href="https://leetcode.com/problems/n-queens/">LeetCode 51. N-Queens</a></li>
+<li><a href="https://leetcode.com/problems/sudoku-solver/">LeetCode 37. Sudoku Solver</a></li>
+<li><a href="https://leetcode.com/problems/word-search/">LeetCode 79. Word Search</a></li>
+<li><a href="https://leetcode.com/problems/palindrome-partitioning/">LeetCode 131. Palindrome Partitioning</a></li>
+</ul>
+<h2>Complexity Analysis</h2>
+<p>The time and space complexity of backtracking algorithms can vary significantly depending on the specific problem:</p>
+<ul>
+<li>
+<p><strong>Time Complexity</strong>:</p>
+<ul>
+<li>For permutations: O(n!) where n is the length of the input string.</li>
+<li>For subsets: O(2^n) where n is the size of the input set.</li>
+<li>For N-Queens: O(n!) where n is the size of the chessboard.</li>
+</ul>
+</li>
+<li>
+<p><strong>Space Complexity</strong>:</p>
+<ul>
+<li>O(n) for the recursion stack where n is the input size.</li>
+<li>Additional space may be required to store the results.</li>
+</ul>
+</li>
+</ul>
+<h2>When to Use</h2>
+<p>Use backtracking when:</p>
+<ul>
+<li>You need to find all (or some) solutions to a problem</li>
+<li>The problem can be broken down into a sequence of decisions</li>
+<li>You need to explore all possible combinations or permutations</li>
+<li>The problem involves constraints that can be used to prune the search space</li>
+<li>You're working with problems that have a natural recursive structure</li>
+<li>Brute force would be too inefficient, but there's no known polynomial-time algorithm</li>
+</ul>
+
+    </div>
+
+    <div class="algorithm-navigation">
+        <div class="algorithm-nav-links">
+            
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+
+                
+                
+
+                <div class="algorithm-nav-previous">
+                    
+                        <a href="/algorithms/11_trie/" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Previous</span>
+                            <span class="algorithm-nav-title">Trie (Prefix Tree)</span>
+                        </a>
+                    
+                </div>
+
+                <div class="algorithm-nav-index">
+                    <a href="/algorithms/" class="algorithm-index-link">All Algorithms</a>
+                </div>
+
+                <div class="algorithm-nav-next">
+                    
+                        <a href="/algorithms/13_dynamic_programming/" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Next</span>
+                            <span class="algorithm-nav-title">Dynamic Programming</span>
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Andrii Kuznietsov. All rights reserved.</p>
+    </footer>
+    <script src="/assets/js/animation.js"></script>
+</body>
+</html>

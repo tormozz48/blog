@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priority Queue</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/prism-theme.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul style="display: flex; flex-direction: row; list-style: none; padding: 0; margin: 0;">
+                <li style="margin-right: 20px;"><a href="/">Home</a></li>
+                <li style="margin-right: 20px;"><a href="/cv/">CV</a></li>
+                <li style="margin-right: 20px;"><a href="/blog/">Blog</a></li>
+                <li><a href="/algorithms/">Algorithms</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        
+<article class="algorithm-page">
+    <header class="algorithm-header">
+        <h1>Priority Queue</h1>
+        <p class="algorithm-description">A data structure that serves elements based on their priority rather than their insertion order</p>
+    </header>
+
+    <div class="algorithm-content">
+        <h1>Priority Queue</h1>
+<h2>Description</h2>
+<p>A Priority Queue is an abstract data type similar to a regular queue, but where each element has a priority associated with it. Elements with higher priority are served before elements with lower priority. In cases where elements have the same priority, they are served according to their order in the queue.</p>
+<h2>Use Cases</h2>
+<ul>
+<li>Task scheduling based on priority</li>
+<li>Dijkstra's shortest path algorithm</li>
+<li>Prim's minimum spanning tree algorithm</li>
+<li>Huffman coding for data compression</li>
+<li>Event-driven simulation</li>
+<li>Load balancing in servers</li>
+</ul>
+<h2>Code Example</h2>
+<pre><code class="language-typescript">/**
+ * A simple implementation of a Priority Queue using a binary heap
+ * This implementation is a min priority queue (lower values have higher priority)
+ */
+class PriorityQueue&lt;T&gt; {
+    private heap: Array&lt;[T, number]&gt;; // [element, priority]
+    
+    constructor() {
+        this.heap = [];
+    }
+    
+    /**
+     * Get the size of the priority queue
+     */
+    size(): number {
+        return this.heap.length;
+    }
+    
+    /**
+     * Check if the priority queue is empty
+     */
+    isEmpty(): boolean {
+        return this.heap.length === 0;
+    }
+    
+    /**
+     * Get the highest priority element without removing it
+     */
+    peek(): T | undefined {
+        return this.heap.length &gt; 0 ? this.heap[0][0] : undefined;
+    }
+    
+    /**
+     * Add an element with a priority to the queue
+     * @param element Element to add
+     * @param priority Priority of the element (lower value means higher priority)
+     */
+    enqueue(element: T, priority: number): void {
+        this.heap.push([element, priority]);
+        this.bubbleUp(this.heap.length - 1);
+    }
+    
+    /**
+     * Remove and return the highest priority element
+     */
+    dequeue(): T | undefined {
+        if (this.heap.length === 0) {
+            return undefined;
+        }
+        
+        const top = this.heap[0][0];
+        const last = this.heap.pop()!;
+        
+        if (this.heap.length &gt; 0) {
+            this.heap[0] = last;
+            this.sinkDown(0);
+        }
+        
+        return top;
+    }
+    
+    /**
+     * Bubble up the element at the given index to maintain the heap property
+     * @param index Index of the element to bubble up
+     */
+    private bubbleUp(index: number): void {
+        const element = this.heap[index];
+        
+        while (index &gt; 0) {
+            const parentIndex = Math.floor((index - 1) / 2);
+            const parent = this.heap[parentIndex];
+            
+            // If the parent has higher or equal priority, we're done
+            if (parent[1] &lt;= element[1]) {
+                break;
+            }
+            
+            // Swap with the parent
+            this.heap[parentIndex] = element;
+            this.heap[index] = parent;
+            
+            // Move up to the parent index
+            index = parentIndex;
+        }
+    }
+    
+    /**
+     * Sink down the element at the given index to maintain the heap property
+     * @param index Index of the element to sink down
+     */
+    private sinkDown(index: number): void {
+        const length = this.heap.length;
+        const element = this.heap[index];
+        
+        while (true) {
+            const leftChildIndex = 2 * index + 1;
+            const rightChildIndex = 2 * index + 2;
+            let leftChild, rightChild;
+            let swapIndex = -1;
+            
+            // Check if the left child exists and has higher priority
+            if (leftChildIndex &lt; length) {
+                leftChild = this.heap[leftChildIndex];
+                if (leftChild[1] &lt; element[1]) {
+                    swapIndex = leftChildIndex;
+                }
+            }
+            
+            // Check if the right child exists and has higher priority
+            if (rightChildIndex &lt; length) {
+                rightChild = this.heap[rightChildIndex];
+                if (
+                    (swapIndex === -1 &amp;&amp; rightChild[1] &lt; element[1]) ||
+                    (swapIndex !== -1 &amp;&amp; rightChild[1] &lt; leftChild![1])
+                ) {
+                    swapIndex = rightChildIndex;
+                }
+            }
+            
+            // If no swap is needed, we're done
+            if (swapIndex === -1) {
+                break;
+            }
+            
+            // Swap with the higher priority child
+            this.heap[index] = this.heap[swapIndex];
+            this.heap[swapIndex] = element;
+            
+            // Move down to the swapped index
+            index = swapIndex;
+        }
+    }
+}
+
+/**
+ * Problem: Merge k Sorted Arrays
+ * 
+ * @param arrays Array of sorted arrays
+ * @returns A single sorted array containing all elements from the input arrays
+ */
+function mergeKSortedArrays(arrays: number[][]): number[] {
+    const result: number[] = [];
+    const pq = new PriorityQueue&lt;[number, number, number]&gt;(); // [value, arrayIndex, elementIndex]
+    
+    // Initialize the priority queue with the first element from each array
+    for (let i = 0; i &lt; arrays.length; i++) {
+        if (arrays[i].length &gt; 0) {
+            pq.enqueue([arrays[i][0], i, 0], arrays[i][0]);
+        }
+    }
+    
+    // Process the priority queue
+    while (!pq.isEmpty()) {
+        const [value, arrayIndex, elementIndex] = pq.dequeue()!;
+        
+        // Add the current minimum to the result
+        result.push(value);
+        
+        // If there are more elements in the same array, add the next one to the queue
+        const nextElementIndex = elementIndex + 1;
+        if (nextElementIndex &lt; arrays[arrayIndex].length) {
+            const nextValue = arrays[arrayIndex][nextElementIndex];
+            pq.enqueue([nextValue, arrayIndex, nextElementIndex], nextValue);
+        }
+    }
+    
+    return result;
+}
+
+// Example usage
+const arrays = [
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9]
+];
+console.log(&quot;Merged sorted arrays:&quot;, mergeKSortedArrays(arrays));
+// Output: Merged sorted arrays: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+// Example of task scheduling
+interface Task {
+    id: number;
+    name: string;
+}
+
+const taskQueue = new PriorityQueue&lt;Task&gt;();
+
+// Add tasks with priorities
+taskQueue.enqueue({ id: 1, name: &quot;Critical bug fix&quot; }, 1);
+taskQueue.enqueue({ id: 2, name: &quot;Feature implementation&quot; }, 3);
+taskQueue.enqueue({ id: 3, name: &quot;Security patch&quot; }, 2);
+taskQueue.enqueue({ id: 4, name: &quot;Documentation update&quot; }, 4);
+
+// Process tasks in order of priority
+console.log(&quot;Processing tasks in priority order:&quot;);
+while (!taskQueue.isEmpty()) {
+    const task = taskQueue.dequeue()!;
+    console.log(`Processing task: ${task.name} (ID: ${task.id})`);
+}
+// Output:
+// Processing tasks in priority order:
+// Processing task: Critical bug fix (ID: 1)
+// Processing task: Security patch (ID: 3)
+// Processing task: Feature implementation (ID: 2)
+// Processing task: Documentation update (ID: 4)
+</code></pre>
+<h2>LeetCode Example Problems</h2>
+<ul>
+<li><a href="https://leetcode.com/problems/merge-k-sorted-lists/">LeetCode 23. Merge k Sorted Lists</a></li>
+<li><a href="https://leetcode.com/problems/k-closest-points-to-origin/">LeetCode 973. K Closest Points to Origin</a></li>
+<li><a href="https://leetcode.com/problems/last-stone-weight/">LeetCode 1046. Last Stone Weight</a></li>
+<li><a href="https://leetcode.com/problems/task-scheduler/">LeetCode 621. Task Scheduler</a></li>
+</ul>
+<h2>Complexity Analysis</h2>
+<p>For a binary heap-based priority queue:</p>
+<ul>
+<li>
+<p><strong>Time Complexity</strong>:</p>
+<ul>
+<li>Enqueue (insertion): O(log n)</li>
+<li>Dequeue (extraction): O(log n)</li>
+<li>Peek: O(1)</li>
+</ul>
+</li>
+<li>
+<p><strong>Space Complexity</strong>: O(n) where n is the number of elements in the priority queue.</p>
+</li>
+</ul>
+<p>For the mergeKSortedArrays example:</p>
+<ul>
+<li><strong>Time Complexity</strong>: O(n log k) where n is the total number of elements across all arrays and k is the number of arrays.</li>
+<li><strong>Space Complexity</strong>: O(k) for storing the k elements in the priority queue.</li>
+</ul>
+<h2>When to Use</h2>
+<p>Use a priority queue when:</p>
+<ul>
+<li>Elements need to be processed based on their priority rather than their insertion order</li>
+<li>You need to efficiently find and remove the element with the highest priority</li>
+<li>You're implementing algorithms like Dijkstra's or Prim's that require efficient access to the minimum/maximum element</li>
+<li>You need to schedule tasks or events based on priority</li>
+<li>You're merging multiple sorted lists or arrays</li>
+</ul>
+
+    </div>
+
+    <div class="algorithm-navigation">
+        <div class="algorithm-nav-links">
+            
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+                <div class="algorithm-nav-previous">
+                    
+                        <a href="/algorithms/07_heap/" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Previous</span>
+                            <span class="algorithm-nav-title">Heap Data Structure</span>
+                        </a>
+                    
+                </div>
+
+                <div class="algorithm-nav-index">
+                    <a href="/algorithms/" class="algorithm-index-link">All Algorithms</a>
+                </div>
+
+                <div class="algorithm-nav-next">
+                    
+                        <a href="/algorithms/09_graph_dfs/" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Next</span>
+                            <span class="algorithm-nav-title">Graph DFS (Depth-First Search)</span>
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Andrii Kuznietsov. All rights reserved.</p>
+    </footer>
+    <script src="/assets/js/animation.js"></script>
+</body>
+</html>

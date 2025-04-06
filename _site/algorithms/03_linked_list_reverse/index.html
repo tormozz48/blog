@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked List Reverse</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/prism-theme.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul style="display: flex; flex-direction: row; list-style: none; padding: 0; margin: 0;">
+                <li style="margin-right: 20px;"><a href="/">Home</a></li>
+                <li style="margin-right: 20px;"><a href="/cv/">CV</a></li>
+                <li style="margin-right: 20px;"><a href="/blog/">Blog</a></li>
+                <li><a href="/algorithms/">Algorithms</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        
+<article class="algorithm-page">
+    <header class="algorithm-header">
+        <h1>Linked List Reverse</h1>
+        <p class="algorithm-description">A technique to reverse a linked list by changing the direction of pointers</p>
+    </header>
+
+    <div class="algorithm-content">
+        <h1>Linked List Reverse</h1>
+<h2>Description</h2>
+<p>Reversing a linked list is a fundamental operation that involves changing the direction of pointers so that each node points to its previous node instead of the next node. This technique is essential for many linked list problems and can be implemented both iteratively and recursively.</p>
+<h2>Use Cases</h2>
+<ul>
+<li>Reversing a linked list or parts of a linked list</li>
+<li>Detecting palindromes in a linked list</li>
+<li>Reordering linked lists</li>
+<li>Solving problems that require traversing a linked list in reverse order</li>
+</ul>
+<h2>Code Example</h2>
+<pre><code class="language-typescript">/**
+ * Definition for singly-linked list node
+ */
+class ListNode {
+    val: number;
+    next: ListNode | null;
+    
+    constructor(val: number = 0, next: ListNode | null = null) {
+        this.val = val;
+        this.next = next;
+    }
+}
+
+/**
+ * Problem: Reverse a singly linked list
+ * 
+ * @param head Head of the linked list
+ * @returns Head of the reversed linked list
+ */
+function reverseList(head: ListNode | null): ListNode | null {
+    let prev: ListNode | null = null;
+    let current: ListNode | null = head;
+    
+    while (current !== null) {
+        // Store the next node
+        const nextTemp: ListNode | null = current.next;
+        
+        // Reverse the pointer
+        current.next = prev;
+        
+        // Move prev and current one step forward
+        prev = current;
+        current = nextTemp;
+    }
+    
+    // The new head is the previous last node
+    return prev;
+}
+
+// Example usage
+function createLinkedList(values: number[]): ListNode | null {
+    if (values.length === 0) return null;
+    
+    const head = new ListNode(values[0]);
+    let current = head;
+    
+    for (let i = 1; i &lt; values.length; i++) {
+        current.next = new ListNode(values[i]);
+        current = current.next;
+    }
+    
+    return head;
+}
+
+function printLinkedList(head: ListNode | null): void {
+    const values: number[] = [];
+    let current = head;
+    
+    while (current !== null) {
+        values.push(current.val);
+        current = current.next;
+    }
+    
+    console.log(values.join(&quot; -&gt; &quot;));
+}
+
+// Create a linked list: 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5
+const list = createLinkedList([1, 2, 3, 4, 5]);
+console.log(&quot;Original linked list:&quot;);
+printLinkedList(list);
+
+// Reverse the linked list
+const reversedList = reverseList(list);
+console.log(&quot;Reversed linked list:&quot;);
+printLinkedList(reversedList);
+// Output: 5 -&gt; 4 -&gt; 3 -&gt; 2 -&gt; 1
+</code></pre>
+<h2>LeetCode Example Problem</h2>
+<p><a href="https://leetcode.com/problems/reverse-linked-list/">LeetCode 206. Reverse Linked List</a></p>
+<h2>Complexity Analysis</h2>
+<ul>
+<li><strong>Time Complexity</strong>: O(n) where n is the number of nodes in the linked list. We need to visit each node once.</li>
+<li><strong>Space Complexity</strong>: O(1) as we only use a fixed amount of extra space regardless of input size.</li>
+</ul>
+<h2>When to Use</h2>
+<p>Use the linked list reverse technique when:</p>
+<ul>
+<li>You need to reverse all or part of a linked list</li>
+<li>You need to process a linked list in reverse order</li>
+<li>You're solving problems that involve palindromes in linked lists</li>
+<li>You need to reorder elements in a linked list</li>
+</ul>
+
+    </div>
+
+    <div class="algorithm-navigation">
+        <div class="algorithm-nav-links">
+            
+                
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+                <div class="algorithm-nav-previous">
+                    
+                        <a href="/algorithms/02_dynamic_sliding_window/" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Previous</span>
+                            <span class="algorithm-nav-title">Dynamic Sliding Window Algorithm</span>
+                        </a>
+                    
+                </div>
+
+                <div class="algorithm-nav-index">
+                    <a href="/algorithms/" class="algorithm-index-link">All Algorithms</a>
+                </div>
+
+                <div class="algorithm-nav-next">
+                    
+                        <a href="/algorithms/04_fast_slow_pointer/" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Next</span>
+                            <span class="algorithm-nav-title">Fast and Slow Pointer</span>
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Andrii Kuznietsov. All rights reserved.</p>
+    </footer>
+    <script src="/assets/js/animation.js"></script>
+</body>
+</html>
