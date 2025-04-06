@@ -100,55 +100,55 @@ title: Curriculum Vitae
     <div class="skills-list">
       <div class="skill-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-        JavaScript
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript</a>
       </div>
       <div class="skill-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-        TypeScript
+        <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a>
       </div>
       <div class="skill-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
-        SQL
-      </div>
-      <div class="skill-item">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-        NodeJS
-      </div>
-      <div class="skill-item">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-        PostgreSQL
+        <a href="https://www.w3schools.com/sql/" target="_blank">SQL</a>
       </div>
       <div class="skill-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
-        React
+        <a href="https://nodejs.org/" target="_blank">NodeJS</a>
       </div>
       <div class="skill-item">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20.01L2.01 20M6 20.01L6.01 20M10 20.01L10.01 20M14 20.01L14.01 20M18 20.01L18.01 20M22 20.01L22.01 20M2 16.01L2.01 16M6 16.01L6.01 16M10 16.01L10.01 16M14 16.01L14.01 16M18 16.01L18.01 16M22 16.01L22.01 16M2 12.01L2.01 12M6 12.01L6.01 12M10 12.01L10.01 12M14 12.01L14.01 12M18 12.01L18.01 12M22 12.01L22.01 12M2 8.01L2.01 8M6 8.01L6.01 8M10 8.01L10.01 8M14 8.01L14.01 8M18 8.01L18.01 8M22 8.01L22.01 8M2 4.01L2.01 4M6 4.01L6.01 4M10 4.01L10.01 4M14 4.01L14.01 4M18 4.01L18.01 4M22 4.01L22.01 4"></path></svg>
-        AWS
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+        <a href="https://www.postgresql.org/" target="_blank">PostgreSQL</a>
+      </div>
+      <div class="skill-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+        <a href="https://reactjs.org/" target="_blank">React</a>
+      </div>
+      <div class="skill-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+        <a href="https://aws.amazon.com/" target="_blank">AWS</a>
       </div>
       <div class="skill-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-3 16l-9 4l-9-4l3-16h18z"></path></svg>
-        Docker
+        <a href="https://www.docker.com/" target="_blank">Docker</a>
       </div>
       <div class="skill-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18c-5 0-5-4-5-4V5h5l2 2h4l2-2h5v10s0 4-5 4s-8 0-8 0z"></path><path d="M9 11v4"></path><path d="M15 11v4"></path></svg>
-        Git
+        <a href="https://git-scm.com/" target="_blank">Git</a>
       </div>
       <div class="skill-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-        NestJS
+        <a href="https://nestjs.com/" target="_blank">NestJS</a>
       </div>
       <div class="skill-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-        MongoDB
+        <a href="https://www.mongodb.com/" target="_blank">MongoDB</a>
       </div>
       <div class="skill-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6.5l5-3v6l5-3v7l-5 3v-6l-5 3v-6l-5 3v-7l5-3z"></path></svg>
-        Java
+        <a href="https://www.java.com/" target="_blank">Java</a>
       </div>
       <div class="skill-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
-        Go
+        <a href="https://golang.org/" target="_blank">Go</a>
       </div>
     </div>
   </div>
@@ -177,48 +177,81 @@ title: Curriculum Vitae
 
   <div class="cv-section">
     <h3>Personal Projects</h3>
-    <ul>
-      <li>Messenger bot for multiple platforms which helps people to organize events like games, meetings, etc.</li>
-      <li>Own captcha npm package "algebraic-captcha" based on solving simple arithmetic equations</li>
-      <li>xlsx-template npm package for creating and using XLSX templates</li>
-      <li>Pretty logger for azure-pipelines: azure-pipelines-logger</li>
-    </ul>
+    <div class="projects-list">
+      <div class="project-item">
+        <h4><a href="https://www.npmjs.com/package/@tormozz48/azure-pipelines-logger" target="_blank">@tormozz48/azure-pipelines-logger</a></h4>
+        <p>Useful logger for scripts which run in azure pipelines</p>
+      </div>
+      <div class="project-item">
+        <h4><a href="https://www.npmjs.com/package/@tormozz48/xlsx-template" target="_blank">@tormozz48/xlsx-template</a></h4>
+        <p>Library for applying your data for given xlsx template with some advanced features</p>
+      </div>
+      <div class="project-item">
+        <h4><a href="https://www.npmjs.com/package/license-discovery" target="_blank">license-discovery</a></h4>
+        <p>License discovery tool</p>
+      </div>
+      <div class="project-item">
+        <h4><a href="https://www.npmjs.com/package/algebraic-captcha" target="_blank">algebraic-captcha</a></h4>
+        <p>NodeJS math captcha package with algebraic formulas</p>
+      </div>
+      <div class="project-item">
+        <h4><a href="https://www.npmjs.com/package/node-lokalise-api" target="_blank">node-lokalise-api</a></h4>
+        <p>Lokalise API</p>
+      </div>
+      <div class="project-item">
+        <h4><a href="https://www.npmjs.com/package/events-extra" target="_blank">events-extra</a></h4>
+        <p>NodeJS EventEmitter with some advanced features</p>
+      </div>
+    </div>
   </div>
 
   <div class="cv-section">
     <h3>Links</h3>
     <div class="links-list">
       <div class="link-item">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 0-5-4-5-4V5h5l2 2h4l2-2h5v10s0 4-5 4s-8 0-8 0z"></path><path d="M9 11v4"></path><path d="M15 11v4"></path></svg>
-        <a href="https://github.com/tormozz48" target="_blank">GitHub</a>
+        <!-- GitHub Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+        </svg>
+        <a href="{{ site.social.github }}" target="_blank">GitHub</a>
       </div>
       <div class="link-item">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-        <a href="https://www.linkedin.com/in/andrey-kuznetsov-5a831b1a/" target="_blank">LinkedIn</a>
+        <!-- LinkedIn Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+        <a href="{{ site.social.linkedin }}" target="_blank">LinkedIn</a>
       </div>
       <div class="link-item">
         <!-- LeetCode Icon -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.111.744 1.715.744a2.314 2.314 0 0 0 1.715-.744c.467-.467.702-1.111.702-1.823s-.235-1.357-.702-1.824l-2.685-2.606c-.953-.915-2.257-1.439-3.638-1.439-1.392 0-2.696.524-3.649 1.439l-4.319 4.38c-.953.954-1.477 2.258-1.477 3.637s.524 2.684 1.477 3.637l4.332 4.332c.953.953 2.255 1.438 3.636 1.438s2.683-.485 3.636-1.438l2.685-2.606c.466-.467.701-1.111.701-1.823s-.235-1.356-.701-1.823c-.467-.467-1.112-.744-1.823-.744s-1.357.277-1.823.744z"></path>
         </svg>
-        <a href="https://leetcode.com/tormozz48/" target="_blank">LeetCode</a>
+        <a href="{{ site.social.leetcode }}" target="_blank">LeetCode</a>
       </div>
       <div class="link-item">
         <!-- HackerRank Icon -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 0c-1.8 0-3.3 1.5-3.3 3.3v5.4H5.3c-1.8 0-3.3 1.5-3.3 3.3s1.5 3.3 3.3 3.3h3.4v5.4c0 1.8 1.5 3.3 3.3 3.3s3.3-1.5 3.3-3.3v-5.4h3.4c1.8 0 3.3-1.5 3.3-3.3s-1.5-3.3-3.3-3.3h-3.4V3.3C15.3 1.5 13.8 0 12 0z"></path>
+          <path d="M12 0L4 6v12l8 6 8-6V6z"></path>
+          <path d="M9 8v8M15 8v8M9 12h6"></path>
         </svg>
-        <a href="https://www.hackerrank.com/tormozz48" target="_blank">HackerRank</a>
+        <a href="{{ site.social.hackerrank }}" target="_blank">HackerRank</a>
       </div>
       <div class="link-item">
         <!-- Stepik Icon -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 5h14v4H5z"></path>
-          <path d="M5 13h4v6H5z"></path>
-          <path d="M15 13h4v6h-4z"></path>
-          <path d="M10 13h4v6h-4z"></path>
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15H7v-4h4v4zm0-6H7V7h4v4zm6 6h-4v-4h4v4zm0-6h-4V7h4v4z"></path>
         </svg>
-        <a href="https://stepik.org/users/108123748" target="_blank">Stepik</a>
+        <a href="{{ site.social.stepik }}" target="_blank">Stepik</a>
+      </div>
+      <div class="link-item">
+        <!-- Twitter/X Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+        </svg>
+        <a href="{{ site.social.twitter }}" target="_blank">X (Twitter)</a>
       </div>
     </div>
   </div>
