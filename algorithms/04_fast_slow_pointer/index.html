@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast and Slow Pointer</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/prism-theme.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul style="display: flex; flex-direction: row; list-style: none; padding: 0; margin: 0;">
+                <li style="margin-right: 20px;"><a href="/">Home</a></li>
+                <li style="margin-right: 20px;"><a href="/cv/">CV</a></li>
+                <li style="margin-right: 20px;"><a href="/blog/">Blog</a></li>
+                <li><a href="/algorithms/">Algorithms</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        
+<article class="algorithm-page">
+    <header class="algorithm-header">
+        <h1>Fast and Slow Pointer</h1>
+        <p class="algorithm-description">A technique using two pointers moving at different speeds to solve linked list problems</p>
+    </header>
+
+    <div class="algorithm-content">
+        <h1>Fast and Slow Pointer</h1>
+<h2>Description</h2>
+<p>The Fast and Slow Pointer technique (also known as the Tortoise and Hare algorithm) involves using two pointers that move through a sequence at different speeds. Typically, the fast pointer moves twice as fast as the slow pointer. This approach is particularly useful for detecting cycles, finding the middle element, or identifying patterns in linked lists or arrays.</p>
+<h2>Use Cases</h2>
+<ul>
+<li>Detecting cycles in a linked list</li>
+<li>Finding the middle node of a linked list</li>
+<li>Determining if a linked list is a palindrome</li>
+<li>Finding the start of a cycle in a linked list</li>
+<li>Detecting if a number is a happy number</li>
+</ul>
+<h2>Code Example</h2>
+<pre class="language-typescript"><code class="language-typescript"><span class="token comment">/**
+ * Definition for singly-linked list node
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">ListNode</span> <span class="token punctuation">{</span>
+    val<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    next<span class="token operator">:</span> ListNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    
+    <span class="token function">constructor</span><span class="token punctuation">(</span>val<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> next<span class="token operator">:</span> ListNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>val <span class="token operator">=</span> val<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>next <span class="token operator">=</span> next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * Problem: Detect if a linked list has a cycle
+ * 
+ * @param head Head of the linked list
+ * @returns True if the linked list has a cycle, false otherwise
+ */</span>
+<span class="token keyword">function</span> <span class="token function">hasCycle</span><span class="token punctuation">(</span>head<span class="token operator">:</span> ListNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">let</span> slow<span class="token operator">:</span> ListNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">=</span> head<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> fast<span class="token operator">:</span> ListNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">=</span> head<span class="token punctuation">;</span>
+    
+    <span class="token comment">// Fast pointer moves twice as fast as slow pointer</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        slow <span class="token operator">=</span> slow<span class="token operator">!</span><span class="token punctuation">.</span>next<span class="token punctuation">;</span>          <span class="token comment">// Move slow pointer one step</span>
+        fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>      <span class="token comment">// Move fast pointer two steps</span>
+        
+        <span class="token comment">// If there is a cycle, the fast and slow pointers will eventually meet</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>slow <span class="token operator">===</span> fast<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// If fast pointer reaches the end, there is no cycle</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * Problem: Find the middle node of a linked list
+ * 
+ * @param head Head of the linked list
+ * @returns The middle node of the linked list
+ */</span>
+<span class="token keyword">function</span> <span class="token function">middleNode</span><span class="token punctuation">(</span>head<span class="token operator">:</span> ListNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> ListNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">let</span> slow<span class="token operator">:</span> ListNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">=</span> head<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> fast<span class="token operator">:</span> ListNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">=</span> head<span class="token punctuation">;</span>
+    
+    <span class="token comment">// When fast reaches the end, slow will be at the middle</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        slow <span class="token operator">=</span> slow<span class="token operator">!</span><span class="token punctuation">.</span>next<span class="token punctuation">;</span>          <span class="token comment">// Move slow pointer one step</span>
+        fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>      <span class="token comment">// Move fast pointer two steps</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">return</span> slow<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Example usage</span>
+<span class="token keyword">function</span> <span class="token function">createLinkedList</span><span class="token punctuation">(</span>values<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> ListNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>values<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">const</span> head <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span>values<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> current <span class="token operator">=</span> head<span class="token punctuation">;</span>
+    
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> values<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        current<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span>values<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        current <span class="token operator">=</span> current<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">return</span> head<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Create a linked list: 1 -> 2 -> 3 -> 4 -> 5</span>
+<span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token function">createLinkedList</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> middle <span class="token operator">=</span> <span class="token function">middleNode</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Middle node value: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>middle<span class="token operator">?.</span>val<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Output: Middle node value: 3</span>
+
+<span class="token comment">// Create a linked list with a cycle: 1 -> 2 -> 3 -> 4 -> 2 (points back to 2)</span>
+<span class="token keyword">const</span> cycleList <span class="token operator">=</span> <span class="token function">createLinkedList</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> current <span class="token operator">=</span> cycleList<span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>current<span class="token operator">!</span><span class="token punctuation">.</span>next <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    current <span class="token operator">=</span> current<span class="token operator">!</span><span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// Create a cycle by pointing the last node to the second node</span>
+current<span class="token operator">!</span><span class="token punctuation">.</span>next <span class="token operator">=</span> cycleList<span class="token operator">!</span><span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Has cycle: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">hasCycle</span><span class="token punctuation">(</span>cycleList<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Output: Has cycle: true</span></code></pre>
+<h2>LeetCode Example Problems</h2>
+<ul>
+<li><a href="https://leetcode.com/problems/linked-list-cycle/">LeetCode 141. Linked List Cycle</a></li>
+<li><a href="https://leetcode.com/problems/middle-of-the-linked-list/">LeetCode 876. Middle of the Linked List</a></li>
+<li><a href="https://leetcode.com/problems/linked-list-cycle-ii/">LeetCode 142. Linked List Cycle II</a></li>
+</ul>
+<h2>Complexity Analysis</h2>
+<ul>
+<li><strong>Time Complexity</strong>: O(n) where n is the number of nodes in the linked list. In the worst case, we might need to traverse the entire list.</li>
+<li><strong>Space Complexity</strong>: O(1) as we only use a fixed amount of extra space regardless of input size.</li>
+</ul>
+<h2>When to Use</h2>
+<p>Use the fast and slow pointer technique when:</p>
+<ul>
+<li>You need to detect cycles in a linked list</li>
+<li>You need to find the middle element of a linked list</li>
+<li>You want to determine if a linked list is a palindrome</li>
+<li>You need to solve problems related to finding patterns or cycles in sequences</li>
+<li>You want to avoid using extra space for storing visited nodes</li>
+</ul>
+
+    </div>
+
+    <div class="algorithm-navigation">
+        <div class="algorithm-nav-links">
+            
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+                <div class="algorithm-nav-previous">
+                    
+                        <a href="/algorithms/03_linked_list_reverse/" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Previous</span>
+                            <span class="algorithm-nav-title">Linked List Reverse</span>
+                        </a>
+                    
+                </div>
+
+                <div class="algorithm-nav-index">
+                    <a href="/algorithms/" class="algorithm-index-link">All Algorithms</a>
+                </div>
+
+                <div class="algorithm-nav-next">
+                    
+                        <a href="/algorithms/05_binary_tree_dfs/" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Next</span>
+                            <span class="algorithm-nav-title">Binary Tree DFS (Depth-First Search)</span>
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Andrii Kuznietsov. All rights reserved.</p>
+    </footer>
+    <script src="/assets/js/animation.js"></script>
+</body>
+</html>

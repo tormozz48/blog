@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Sliding Window Algorithm</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/prism-theme.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul style="display: flex; flex-direction: row; list-style: none; padding: 0; margin: 0;">
+                <li style="margin-right: 20px;"><a href="/">Home</a></li>
+                <li style="margin-right: 20px;"><a href="/cv/">CV</a></li>
+                <li style="margin-right: 20px;"><a href="/blog/">Blog</a></li>
+                <li><a href="/algorithms/">Algorithms</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        
+<article class="algorithm-page">
+    <header class="algorithm-header">
+        <h1>Dynamic Sliding Window Algorithm</h1>
+        <p class="algorithm-description">A technique to process arrays or strings by maintaining a variable-size window that adjusts based on specific conditions</p>
+    </header>
+
+    <div class="algorithm-content">
+        <h1>Dynamic Sliding Window Algorithm</h1>
+<h2>Description</h2>
+<p>The Dynamic Sliding Window algorithm is a technique used to process arrays or strings by maintaining a window of variable size that expands or contracts based on certain conditions. Unlike the fixed sliding window, the size of the window adjusts dynamically as we process the elements.</p>
+<h2>Use Cases</h2>
+<ul>
+<li>Finding the longest substring without repeating characters</li>
+<li>Finding the minimum size subarray sum greater than a given value</li>
+<li>Finding the longest substring with at most k distinct characters</li>
+<li>Finding the smallest subarray with a sum greater than or equal to a target value</li>
+</ul>
+<h2>Code Example</h2>
+<pre class="language-typescript"><code class="language-typescript"><span class="token comment">/**
+ * Problem: Find the length of the longest substring without repeating characters
+ * 
+ * @param s Input string
+ * @returns Length of the longest substring without repeating characters
+ */</span>
+<span class="token keyword">function</span> <span class="token function">lengthOfLongestSubstring</span><span class="token punctuation">(</span>s<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">const</span> charMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">number</span><span class="token operator">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> maxLength <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// Right pointer expands the window</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> right <span class="token operator">&lt;</span> s<span class="token punctuation">.</span>length<span class="token punctuation">;</span> right<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> currentChar <span class="token operator">=</span> s<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// If character is already in the window, move left pointer to position after the last occurrence</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>charMap<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>currentChar<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> charMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>currentChar<span class="token punctuation">)</span><span class="token operator">!</span> <span class="token operator">>=</span> left<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            left <span class="token operator">=</span> charMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>currentChar<span class="token punctuation">)</span><span class="token operator">!</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment">// Update the last position of the character</span>
+        charMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>currentChar<span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// Update maximum length</span>
+        maxLength <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxLength<span class="token punctuation">,</span> right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">return</span> maxLength<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Example usage</span>
+<span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">"abcabcbb"</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Length of longest substring without repeating characters: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">lengthOfLongestSubstring</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Output: Length of longest substring without repeating characters: 3 (substring "abc")</span></code></pre>
+<h2>LeetCode Example Problem</h2>
+<p><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">LeetCode 3. Longest Substring Without Repeating Characters</a></p>
+<h2>Complexity Analysis</h2>
+<ul>
+<li><strong>Time Complexity</strong>: O(n) where n is the length of the string. Each character is processed at most twice (once by the right pointer and at most once by the left pointer).</li>
+<li><strong>Space Complexity</strong>: O(min(m, n)) where m is the size of the character set and n is the length of the string. In the worst case, we might need to store all characters of the string in the hash map.</li>
+</ul>
+<h2>When to Use</h2>
+<p>Use the dynamic sliding window technique when:</p>
+<ul>
+<li>You need to find a subarray or substring that satisfies certain conditions but the size is not fixed</li>
+<li>The problem involves finding the longest/shortest subarray that meets specific criteria</li>
+<li>The problem can be solved by expanding and contracting a window based on certain conditions</li>
+<li>You want to avoid recalculating overlapping parts of subarrays</li>
+</ul>
+
+    </div>
+
+    <div class="algorithm-navigation">
+        <div class="algorithm-nav-links">
+            
+                
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+                <div class="algorithm-nav-previous">
+                    
+                        <a href="/algorithms/01_fixed_sliding_window/" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Previous</span>
+                            <span class="algorithm-nav-title">Fixed Sliding Window Algorithm</span>
+                        </a>
+                    
+                </div>
+
+                <div class="algorithm-nav-index">
+                    <a href="/algorithms/" class="algorithm-index-link">All Algorithms</a>
+                </div>
+
+                <div class="algorithm-nav-next">
+                    
+                        <a href="/algorithms/03_linked_list_reverse/" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Next</span>
+                            <span class="algorithm-nav-title">Linked List Reverse</span>
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Andrii Kuznietsov. All rights reserved.</p>
+    </footer>
+    <script src="/assets/js/animation.js"></script>
+</body>
+</html>

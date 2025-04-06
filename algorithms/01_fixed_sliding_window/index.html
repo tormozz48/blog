@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Sliding Window Algorithm</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/prism-theme.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul style="display: flex; flex-direction: row; list-style: none; padding: 0; margin: 0;">
+                <li style="margin-right: 20px;"><a href="/">Home</a></li>
+                <li style="margin-right: 20px;"><a href="/cv/">CV</a></li>
+                <li style="margin-right: 20px;"><a href="/blog/">Blog</a></li>
+                <li><a href="/algorithms/">Algorithms</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        
+<article class="algorithm-page">
+    <header class="algorithm-header">
+        <h1>Fixed Sliding Window Algorithm</h1>
+        <p class="algorithm-description">A technique to process arrays or strings by maintaining a fixed-size window that slides through the data</p>
+    </header>
+
+    <div class="algorithm-content">
+        <h1>Fixed Sliding Window Algorithm</h1>
+<h2>Description</h2>
+<p>The Fixed Sliding Window algorithm is a technique used to process arrays or strings by maintaining a window of fixed size that slides through the data. This approach is particularly efficient for problems where we need to consider subarrays or substrings of a specific length.</p>
+<h2>Use Cases</h2>
+<ul>
+<li>Finding maximum/minimum sum of a subarray of fixed size k</li>
+<li>Finding the maximum number of consecutive 1's in a binary array</li>
+<li>Calculating moving averages in time series data</li>
+<li>Finding the first negative number in every window of size k</li>
+</ul>
+<h2>Code Example</h2>
+<pre class="language-typescript"><code class="language-typescript"><span class="token comment">/**
+ * Problem: Find the maximum sum of a subarray of size k
+ * 
+ * @param nums Array of numbers
+ * @param k Size of the sliding window
+ * @returns Maximum sum of any subarray of size k
+ */</span>
+<span class="token keyword">function</span> <span class="token function">maxSumSubarray</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> k<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"Array length should be greater than or equal to k"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// Calculate sum of first window</span>
+    <span class="token keyword">let</span> windowSum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        windowSum <span class="token operator">+=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">let</span> maxSum <span class="token operator">=</span> windowSum<span class="token punctuation">;</span>
+    
+    <span class="token comment">// Slide the window from left to right</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> k<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Add the next element and remove the first element of the previous window</span>
+        windowSum <span class="token operator">=</span> windowSum <span class="token operator">+</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> nums<span class="token punctuation">[</span>i <span class="token operator">-</span> k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        maxSum <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxSum<span class="token punctuation">,</span> windowSum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">return</span> maxSum<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Example usage</span>
+<span class="token keyword">const</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> k <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Maximum sum of a subarray of size </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>k<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">maxSumSubarray</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Output: Maximum sum of a subarray of size 3: 9 (subarray [5, 1, 3])</span></code></pre>
+<h2>LeetCode Example Problem</h2>
+<p><a href="https://leetcode.com/problems/maximum-average-subarray-i/">LeetCode 643. Maximum Average Subarray I</a></p>
+<h2>Complexity Analysis</h2>
+<ul>
+<li><strong>Time Complexity</strong>: O(n) where n is the length of the array. We process each element at most twice (once when it enters the window and once when it leaves).</li>
+<li><strong>Space Complexity</strong>: O(1) as we only use a fixed amount of extra space regardless of input size.</li>
+</ul>
+<h2>When to Use</h2>
+<p>Use the fixed sliding window technique when:</p>
+<ul>
+<li>You need to find a subarray of fixed size k that satisfies certain conditions</li>
+<li>You want to avoid recalculating overlapping parts of subarrays</li>
+<li>The problem involves consecutive elements in an array or string</li>
+</ul>
+
+    </div>
+
+    <div class="algorithm-navigation">
+        <div class="algorithm-nav-links">
+            
+                
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+                <div class="algorithm-nav-previous">
+                    
+                </div>
+
+                <div class="algorithm-nav-index">
+                    <a href="/algorithms/" class="algorithm-index-link">All Algorithms</a>
+                </div>
+
+                <div class="algorithm-nav-next">
+                    
+                        <a href="/algorithms/02_dynamic_sliding_window/" class="algorithm-nav-link">
+                            <span class="algorithm-nav-direction">Next</span>
+                            <span class="algorithm-nav-title">Dynamic Sliding Window Algorithm</span>
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Andrii Kuznietsov. All rights reserved.</p>
+    </footer>
+    <script src="/assets/js/animation.js"></script>
+</body>
+</html>
