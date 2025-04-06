@@ -1,0 +1,21 @@
+{
+  "title": "Andrii Kuznietsov | Personal Website",
+  "description": "Personal website of Andrii Kuznietsov, Senior Software Engineer",
+  "url": "https://example.com",
+  "author": "Andrii Kuznietsov",
+  "year": 2025,
+  "firstName": "Andrii",
+  "lastName": "Kuznietsov",
+  "shortBio": "I am innovative Senior Software Engineer with 16 years of experience crafting high-impact solutions in backend and accounting systems. Adept at building robust modules and creating architectures from the ground up.",
+  "location": "Warsaw, Poland",
+  "email": "tormozz48@gmail.com",
+  "phone": "+48508527551",
+  "social": {
+    "github": "https://github.com/tormozz48",
+    "linkedin": "https://linkedin.com/in/andrii-kuznietsov",
+    "twitter": "https://twitter.com/tormozz48",
+    "leetcode": "https://leetcode.com/tormozz48/",
+    "hackerrank": "https://www.hackerrank.com/tormozz48",
+    "stepik": "https://stepik.org/users/tormozz48"
+  }
+}

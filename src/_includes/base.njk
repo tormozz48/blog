@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title | default("My Personal Site") }}</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul style="display: flex; flex-direction: row; list-style: none; padding: 0; margin: 0;">
+                <li style="margin-right: 20px;"><a href="/">Home</a></li>
+                <li style="margin-right: 20px;"><a href="/cv/">CV</a></li>
+                <li><a href="/blog/">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        {{ content | safe }}
+    </main>
+    
+    <footer>
+        <p>&copy; {{ site.year }} {{ site.author }}. All rights reserved.</p>
+    </footer>
+    <script src="/assets/js/animation.js"></script>
+</body>
+</html>
