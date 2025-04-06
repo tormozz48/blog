@@ -8,10 +8,10 @@ title: All Tags
 <ul class="tags-list">
   {%- for tag in collections.tagList -%}
   <li>
-    <a href="/tags/{{ tag }}/">{{ tag }}</a>
+    <a href="{{ ('/tags/' + tag) | url }}">{{ tag }}</a>
     <span class="tag-count">({{ collections[tag].length }})</span>
   </li>
   {%- endfor -%}
 </ul>
 
-<p><a href="/blog/">← Back to all posts</a></p>
+<p><a href="{{ '/blog/' | url }}">← Back to all posts</a></p>

@@ -20,6 +20,28 @@ module.exports = function(eleventyConfig) {
     });
   });
   
+  // Add URL filter for handling paths with the pathPrefix and making them absolute
+  eleventyConfig.addFilter("url", function(url) {
+    // Don't modify URLs that are already absolute
+    if (url.startsWith('http')) {
+      return url;
+    }
+    
+    // Get site data
+    const siteData = require('./src/_data/site.json');
+    const baseUrl = siteData.url;
+    
+    // For root-relative URLs, make them absolute by prepending the site URL
+    if (url.startsWith('/')) {
+      // Remove the leading slash to avoid double slashes
+      const cleanUrl = url.substring(1);
+      return `${baseUrl}/${cleanUrl}`;
+    }
+    
+    // For relative URLs, make them absolute as well
+    return `${baseUrl}/${url}`;
+  });
+  
   // Add collections
   eleventyConfig.addCollection("posts", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/blog/*.md");
@@ -60,6 +82,8 @@ module.exports = function(eleventyConfig) {
     },
     // Use .html as template engine for markdown files
     markdownTemplateEngine: "njk",
-    templateFormats: ["md", "njk", "html"]
+    templateFormats: ["md", "njk", "html"],
+    // Set pathPrefix to the repository name for GitHub Pages
+    pathPrefix: "/blog/"
   };
 };

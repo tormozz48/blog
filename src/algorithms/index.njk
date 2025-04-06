@@ -10,7 +10,7 @@ title: Algorithms Cheatsheet
 
 <div class="algorithms-grid">
   {% for algorithm in collections.algorithms %}
-    <a href="{{ algorithm.url }}" class="algorithm-card">
+    <a href="{{ algorithm.url | url }}" class="algorithm-card">
       <h2>{{ algorithm.data.title }}</h2>
       <p>{{ algorithm.data.description }}</p>
     </a>

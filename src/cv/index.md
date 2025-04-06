@@ -3,14 +3,14 @@ layout: base.njk
 title: Curriculum Vitae
 ---
 
-<link rel="stylesheet" href="/assets/css/cv.css">
+<link rel="stylesheet" href="{{ '/assets/css/cv.css' | url }}">
 
 <div class="cv-container">
   <div class="cv-section">
     <h3>Personal Information</h3>
     <div class="personal-info-container">
       <div class="profile-photo-container">
-        <img src="/assets/images/profile.jpg" alt="Andrii Kuznietsov" class="profile-photo">
+        <img src="{{ '/assets/images/profile.jpg' | url }}" alt="Andrii Kuznietsov" class="profile-photo">
       </div>
       <div class="personal-info">
         <div class="personal-info-item">
